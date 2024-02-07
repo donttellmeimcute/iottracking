@@ -15,7 +15,7 @@ while True:
 
     cv2.rectangle(frame,(0,0),(frame.shape[1],40),(0,0,0),-1)
     color = (0, 255, 0)
-    texto_estado = "Estado: No se ha detectado movimiento"
+    texto_estado = "Estado: Standby"
 
     area_pts = np.array([[0, 0], [frame.shape[1], 0], [frame.shape[1], frame.shape[0]], [0, frame.shape[0]]])
     
@@ -26,6 +26,7 @@ while True:
     fgmask = fgbg.apply(image_area)
     fgmask = cv2.morphologyEx(fgmask, cv2.MORPH_OPEN, kernel)
     fgmask = cv2.dilate(fgmask, None, iterations=2)
+    fgmask = cv2.medianBlur(fgmask, 5)  # Add median blur to reduce noise
 
     cnts, _ = cv2.findContours(fgmask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     
@@ -46,7 +47,7 @@ while True:
     if closest_person is not None:
         x, y, w, h = cv2.boundingRect(closest_person)
         cv2.rectangle(frame, (x,y), (x+w, y+h),(0,255,0), 2)
-        texto_estado = "Estado: Alerta Movimiento Detectado!"
+        texto_estado = "Estado: movimiento detectado"
         color = (0, 0, 255)    
 
     cv2.drawContours(frame, [area_pts], -1, color, 2)
