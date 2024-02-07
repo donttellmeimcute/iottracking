@@ -32,14 +32,30 @@ while True:
     fgmask = cv2.dilate(fgmask, None, iterations=2)
 
     cnts = cv2.findContours(fgmask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[0]
+    
+    # Variables para almacenar la persona más cercana al centro
+    min_distance = float('inf')
+    closest_person = None
+    
     for cnt in cnts:
         if cv2.contourArea(cnt) > 500:
             x, y, w, h = cv2.boundingRect(cnt)
-            cv2.rectangle(frame, (x,y), (x+w, y+h),(0,255,0), 2)
-            texto_estado = "Estado: Alerta Movimiento Detectado!"
-            color = (0, 0, 255)    
+            center_x = x + w // 2
+            center_y = y + h // 2
+            distance = np.sqrt((frame.shape[1] // 2 - center_x) ** 2 + (frame.shape[0] // 2 - center_y) ** 2)
+            
+            # Actualizar la persona más cercana al centro
+            if distance < min_distance:
+                min_distance = distance
+                closest_person = cnt
+    
+    if closest_person is not None:
+        x, y, w, h = cv2.boundingRect(closest_person)
+        cv2.rectangle(frame, (x,y), (x+w, y+h),(0,255,0), 2)
+        texto_estado = "Estado: Alerta Movimiento Detectado!"
+        color = (0, 0, 255)    
 
-    # Visuzalizamos el alrededor del área que vamos a analizar
+    # Visualizamos el alrededor del área que vamos a analizar
     # y el estado de la detección de movimiento        
     cv2.drawContours(frame, [area_pts], -1, color, 2)
     cv2.putText(frame, texto_estado , (10, 30),
