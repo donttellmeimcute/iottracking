@@ -2,17 +2,16 @@
 <html>
 <head>
     <title>Sistema</title>
-    <link rel="stylesheet" href="./styles/style1.css">
+    <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item"><a class="nav-link" href="#all" onclick="mostrarCuadricula()">Todos</a></li>
-            <li class="nav-item"><a class="nav-link" href="#cam1" onclick="mostrarCamara('cam1')">Cam1</a></li>
-            <li class="nav-item"><a class="nav-link" href="#cam2" onclick="mostrarCamara('cam2')">Cam2</a></li>
-            <li class="nav-item"><a class="nav-link" href="#cam3" onclick="mostrarCamara('cam3')">Cam3</a></li>
-            <li class="nav-item dropdown">
+        <div class="navbar">
+            <a class="nav-link" href="#all" onclick="mostrarCuadricula()">Todos</a>
+            <a class="nav-link" href="#cam1" onclick="mostrarCamara('cam1')">Cam1</a>
+            <a class="nav-link" href="#cam2" onclick="mostrarCamara('cam2')">Cam2</a>
+            <a class="nav-link" href="#cam3" onclick="mostrarCamara('cam3')">Cam3</a>
+            <div class="dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Mi Cuenta
                 </a>
@@ -20,8 +19,8 @@
                     <a class="dropdown-item" href="cuenta.html">Cuenta</a>
                     <a class="dropdown-item" href="#" onclick="cerrarSesion()">Cerrar sesión</a>
                 </div>
-            </li>
-        </ul>
+            </div>
+        </div>
     </nav>
 
     <div id="contenido">
