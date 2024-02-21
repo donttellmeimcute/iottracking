@@ -66,3 +66,26 @@
 .info-item {
   margin-bottom: 10px;
 }
+
+#login
+{
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left:60%;
+  transform: translate(-50%,-50%);
+  height: 50%;
+  width: 50%;
+}
+
+#imagenlogin
+{
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  height: 50%;
+  width: 50%;
+  border-radius: 50%;
+}
