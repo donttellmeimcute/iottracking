@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mi Cuenta</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./styles/style2.css">
+    
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+            <li><a href="system.html">Sistema</a></li>
+            <li><a href="cuenta.html">Mi Cuenta</a></li>
+            <li><a href="#" id="logout">Cerrar Sesión</a></li>
+        </ul>
+    </div>
+    <div class="container">
+        <h1>Mi Cuenta</h1>
+        <div class="profile">
+            <img src="id.jpg" alt="Foto de Perfil">
+            <div class="info">
+                <div class="info-item">
+                    <label>Nombre:</label>
+                    <span>John Doe</span>
+                </div>
+                <div class="info-item">
+                    <label>Email:</label>
+                    <span>johndoe@example.com</span>
+                </div>
+                <div class="info-item">
+                    <label>Nombre de Usuario:</label>
+                    <span>johndoe123</span>
+                </div>
+                
+            </div>
+        </div>
+       
+    </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById("logout").addEventListener("click", function() {
+            document.cookie = "cookieName=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            window.location.href = "index.html";
+        });
+    </script>
+</body>
+</html>

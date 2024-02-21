@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sistema</title>
+    <link rel="stylesheet" href="./styles/style1.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a class="nav-link" href="#all" onclick="mostrarCuadricula()">Todos</a></li>
+            <li class="nav-item"><a class="nav-link" href="#cam1" onclick="mostrarCamara('cam1')">Cam1</a></li>
+            <li class="nav-item"><a class="nav-link" href="#cam2" onclick="mostrarCamara('cam2')">Cam2</a></li>
+            <li class="nav-item"><a class="nav-link" href="#cam3" onclick="mostrarCamara('cam3')">Cam3</a></li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Mi Cuenta
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="cuenta.html">Cuenta</a>
+                    <a class="dropdown-item" href="#" onclick="cerrarSesion()">Cerrar sesión</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <div id="contenido">
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function mostrarCuadricula() {
+            var contenido = document.getElementById("contenido");
+            contenido.innerHTML = "<h2>Cuadrícula de Cámaras</h2><div class='grid'><div class='camera'>Cámara 1</div><div class='camera'>Cámara 2</div><div class='camera'>Cámara 3</div></div>";
+        }
+
+        function mostrarCamara(camara) {
+            var contenido = document.getElementById("contenido");
+            contenido.innerHTML = "<h2>Cámara " + camara + "</h2><div class='rtsp'>Transmisión RTSP de la Cámara " + camara + "</div>";
+        }
+
+        function cerrarSesion() {
+            document.cookie = "session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>
